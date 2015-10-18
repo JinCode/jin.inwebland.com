@@ -2,16 +2,13 @@
 var webpack = require('webpack');
 
 var ORIGIN = __dirname + '/dev';
-var APP = __dirname + '/build';
+var APP = __dirname;
 
 module.exports = {
     // config goes here
     module:{
         loaders: [
-            {
-                test: /\.scss$/,
-                loader: "style!css!sass"
-            },
+            { test: /\.scss$/, loader: "style!css!sass"},
             { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}
         ]
     },
@@ -20,7 +17,8 @@ module.exports = {
     entry: {
         app: [
             'webpack/hot/dev-server',
-            './entry.js']
+            './entry.js'
+        ]
     },
     output: {
         path: APP,
@@ -28,6 +26,7 @@ module.exports = {
     },
 
     devServer: {
+        port: 1991,
         historyApiFallback: true,
         hot: true,
         inline: true,
