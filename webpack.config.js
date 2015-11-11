@@ -9,7 +9,9 @@ module.exports = {
     module:{
         loaders: [
             { test: /\.scss$/, loader: "style!css!sass"},
-            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}
+            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
+            { test: /\.jsx$/, loader: 'babel-loader'},
+            { test: /\.png$/, loader: 'url-loader'}
         ]
     },
 
@@ -34,5 +36,13 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
+    externals: {
+        //don't bundle the 'react' npm package with our bundle.js
+        //but get it from a global 'React' variable
+        'react': 'React'
+    },
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    }
 };

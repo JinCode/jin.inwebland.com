@@ -6,3 +6,6 @@ require('./js/section_scroll.js');
 
 //styling
 require('./scss/main.scss');
+
+//react
+require('./jsx/index.jsx');
